@@ -66,7 +66,7 @@
      * @augments EyesBase
      * @constructor
      **/
-    function Eyes(serverUrl, isDisabled) {
+    function Eyes(serverUrl, isDisabled, promiseFactory) {
         this._forceFullPage = false;
         this._imageRotationDegrees = 0;
         this._automaticRotation = true;
@@ -74,7 +74,7 @@
         this._hideScrollbars = null;
         this._checkFrameOrElement = false;
         this._stitchMode = StitchMode.Scroll;
-        this._promiseFactory = new PromiseFactory();
+        this._promiseFactory = promiseFactory || new PromiseFactory();
         this._waitBeforeScreenshots = DEFAULT_WAIT_BEFORE_SCREENSHOTS;
 
         EyesBase.call(this, this._promiseFactory, serverUrl || EyesBase.DEFAULT_EYES_SERVER, isDisabled);
